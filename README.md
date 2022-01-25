@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Traveler Experieced Share
 
-## Getting Started
+* UI:
+  - Shows all the travelers' experiences
+  - The blogs and with pagination in home page (10 blog articles per page).
+  - With the click of a single blog, the details of that specific travel experience will be shown. The parties may include      several information like date, time, location, expense, and rating with stars of the experience. (Feel free to add more information according to your preference).
+  - Add your own experience on the website(user login needed).
+  - Compare the experience based on the information provided. 
 
-First, run the development server:
+* Authentication:
+  - google sign in, register user and an email verification.
+  
+* Admin functionalities:
+  - Admin can see all blog posts and create, read, update, delete blog posts in real time without page reload.
+  - For any submission from the user, admin has to approve and after that the blog will be visible in the UI and in the dashboard it will be marked as approved.
+  - There will be an Admin account that can add more Admins.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## use email: test@test.com and password: #2021dev as password for default admin.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* Technologies
+ ## Front-End
+    -(Next.js, Tailwind CSS)
+ ## Back-End
+    -(Node.js, Express.js)
+ ## Database
+    -(MongoDB)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
