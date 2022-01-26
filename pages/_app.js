@@ -1,11 +1,17 @@
-import Layout from '../components/layout'
+import Footer from '../components/footer'
+import Navbar from '../components/navbar'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
+  if (Component.getLayout) {
+    return Component.getLayout(<Component {...pageProps} />)
+  }
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+     <>
+      <Navbar/>
+        <Component {...pageProps} />
+      <Footer/>
+     </>
   )
 }
 

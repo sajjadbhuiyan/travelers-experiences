@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {useState} from 'react'
-import logo from '../public/images/logo.svg'
-import SideBar from './sidebar'
+import logo from '../public/images/logo.png'
 
 function NavLink({to, children}) {
     return <Link href={to} className={`mx-4`}>
@@ -58,6 +57,9 @@ export default function Navbar() {
                     </Link>
                     <Link href="/contact">
                         <a>CONTACT</a>
+                    </Link>
+                    <Link href="/dashboard">
+                        <a className='text-indigo-300'>dashboard</a>
                     </Link>
                     <Link href="/login">
                         <a className='px-8 py-2 bg-gray-800 text-white rounded-lg'>login</a>
