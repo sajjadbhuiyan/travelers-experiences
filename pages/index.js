@@ -1,7 +1,11 @@
+import Banner from "../components/banner"
+import HomeBlog from "../components/homeBlog"
+
 function Home(){
   return (
     <>
-      <h1>Home</h1>
+     <Banner></Banner>
+      <HomeBlog></HomeBlog>
     </>
   )
 }
