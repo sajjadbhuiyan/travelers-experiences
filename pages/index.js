@@ -1,11 +1,11 @@
 import Banner from "../components/banner"
-import HomeBlog from "../components/homeBlog"
+import BlogDataFetching from "../components/blogDataFetching"
 
 function Home(){
   return (
     <>
      <Banner></Banner>
-      <HomeBlog></HomeBlog>
+      <BlogDataFetching></BlogDataFetching>
     </>
   )
 }

@@ -60,9 +60,12 @@ export default function Navbar() {
                     <Link href="/contact">
                         <a>CONTACT</a>
                     </Link>
-                    <Link href="/dashboard">
-                        <a className='text-indigo-300'>dashboard</a>
-                    </Link>
+                    {
+                        user?.email ?
+                            <Link href="/dashboard">
+                            <a className='text-indigo-300'>dashboard</a>
+                            </Link>: ""
+                    }
                     {
                         user?.email ?
                         <Link href="#">
