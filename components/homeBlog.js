@@ -1,9 +1,7 @@
-import Image from "next/image"
 import Link from "next/link"
-import travail1 from "../public/images/1.jpg"
 function HomeBlog({blog}){
 
-    const {title} = blog;
+    const {title,_id,date,time,location,image} = blog;
 
     return(
         <>
@@ -11,7 +9,7 @@ function HomeBlog({blog}){
          
              {/* ====card1==== */}
              <div className=" w-80 h-full bg-white drop-shadow-md">
-                 <Image className="w-full h-20" alt="travelai" src={travail1}/>
+                 <img className="w-full h-60" alt="travelai" src={image}/>
                  <div className="p-2 grid gap-y-6">
                      <div className="grid grid-cols-6">
                          <div className="col-span-2 mx-auto my-auto text-indigo-700">
@@ -32,8 +30,8 @@ function HomeBlog({blog}){
                                 </svg>
                             </div>
                             <div className="col-span-4 -mx-4">
-                                <h2 className="font-semibold text-sm">Sat,May 25, 2021</h2>
-                                <p className="text-xs text-slate-400">10 AM to 6 PM</p>
+                                <h2 className="font-semibold text-sm">{date}</h2>
+                                <p className="text-xs text-slate-400">{time}</p>
                             </div>
                         </div>
                         {/* ====location icon=== */}
@@ -46,12 +44,12 @@ function HomeBlog({blog}){
                             </div>
                             <div className="col-span-4 -mx-4">
                                 <h2 className="font-semibold text-sm">Sundarbans</h2>
-                                <p className="text-xs text-slate-400">Khulna, Bangladesh</p>
+                                <p className="text-xs text-slate-400">{location}</p>
                             </div>
                         </div>
                      </div>
                      <div className="grid grid-col-6 gap-x-6 text-sm ml-8 text-indigo-700">
-                         <Link href="/blog">
+                         <Link href={`blog/${_id}`}>
                             <a>View More</a>
                          </Link>
                      </div>
