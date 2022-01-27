@@ -1,7 +1,32 @@
 import Link from "next/link";
 import React,{useState} from "react";
-export default function LoginF() {
+import useAuth from "../../components/hooks/useAuth";
+export default function Login() {
     const [showpass, setShowPass] = useState(false)
+    const {user, loginUser, authError, signInWithGoogle} =useAuth();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+     
+
+    const handleEmailChange = e => {
+        setEmail(e.target.value);
+      }
+    
+      const handlePasswordChange = e => {
+        setPassword(e.target.value)
+      }
+
+      const handleLoginSubmit = e => {
+        loginUser(email,password)
+        console.log(email, password)
+        e.preventDefault();
+        
+      }
+
+      const handleGoogleSignIn = ()=>{
+        signInWithGoogle()
+      }
     return (
         <>
             <div className="bg-indigo-50">
@@ -36,7 +61,7 @@ export default function LoginF() {
                                 <path d="M4.17667 11.9366C3.97215 11.3165 3.85378 10.6521 3.85378 9.96562C3.85378 9.27905 3.97215 8.6147 4.16591 7.99463L4.1605 7.86257L1.13246 5.44363L1.03339 5.49211C0.37677 6.84302 0 8.36005 0 9.96562C0 11.5712 0.37677 13.0881 1.03339 14.4391L4.17667 11.9366Z" fill="#FBBC05" />
                                 <path d="M9.68807 3.85336C11.5073 3.85336 12.7344 4.66168 13.4342 5.33718L16.1684 2.59107C14.4892 0.985496 12.3039 0 9.68807 0C5.89885 0 2.62637 2.23672 1.0332 5.49214L4.16573 7.99466C4.95162 5.59183 7.12608 3.85336 9.68807 3.85336Z" fill="#EB4335" />
                             </svg>
-                            <p className="text-base font-medium ml-4 text-gray-700">Continue with Google</p>
+                            <p onClick={handleGoogleSignIn} className="text-base font-medium ml-4 text-gray-700">Continue with Google</p>
                         </button>
                         <button aria-label="Continue with github" role="button" className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 p-3 border rounded-lg border-gray-700 flex items-center w-full mt-4 hover:bg-gray-100">
                             <svg width={21} height={20} viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,12 +86,13 @@ export default function LoginF() {
                             <p className="text-base font-medium leading-4 px-2.5 text-gray-500">OR</p>
                             <hr className="w-full bg-gray-400" />
                         </div>
+                        <form>
                         <div>
                             <label htmlFor="email" className="text-sm font-medium leading-none text-gray-800">
                                 {" "}
                                 Email{" "}
                             </label>
-                            <input id="email" aria-labelledby="email" type="email" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2" placeholder="e.g: john@gmail.com " />
+                            <input onBlur={handleEmailChange} id="email" aria-labelledby="email" type="email" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2" placeholder="e.g: john@gmail.com " />
                         </div>
                         <div className="mt-6 w-full">
                             <label htmlFor="myInput" className="text-sm font-medium leading-none text-gray-800">
@@ -74,7 +100,7 @@ export default function LoginF() {
                                 Password{" "}
                             </label>
                             <div className="relative flex items-center justify-center">
-                                <input id="myInput" type={showpass ? "text" : "password"} className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" />
+                                <input onBlur={handlePasswordChange} id="myInput" type={showpass ? "text" : "password"} className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" />
                                 <div onClick={()=>setShowPass(!showpass)} className="absolute right-0 mt-2 mr-3 cursor-pointer">
                                     <div id="show">
                                         <svg width={16} height={16} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,14 +122,20 @@ export default function LoginF() {
                             </div>
                         </div>
                         <div className="mt-8">
-                            <Link href='/registration'>
                                <a>
-                                <button role="button" className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
-                                    Create my account
+                                <button onClick={handleLoginSubmit} role="button" className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
+                                    LOG IN
                                 </button>
                                </a>
-                            </Link>
                         </div>
+                        </form>
+                        <p className="text-sm leading-none ml-2 py-2">
+                            Create New Account <span className="text-indigo-700">
+                                <Link href="/registration">
+                                  <a>registration</a>
+                                </Link>
+                            </span>
+                        </p>
                     </div>
                     <div className="xl:w-1/3 md:w-1/2 lg:ml-16 ml-8 md:mt-0 mt-6">
                         <div className="pl-8 md:block hidden">

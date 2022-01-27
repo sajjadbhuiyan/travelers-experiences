@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {useState} from 'react'
 import logo from '../public/images/logo.png'
+import useAuth from './hooks/useAuth'
 
 function NavLink({to, children}) {
     return <Link href={to} className={`mx-4`}>
@@ -30,6 +31,7 @@ function MobileNav({open, setOpen}) {
 }
 
 export default function Navbar() {
+    const {user, logout} = useAuth()
     const [open, setOpen] = useState(false)
     return (
         <nav className="flex filter drop-shadow-md bg-white px-4 py-4 h-20 items-center">
@@ -61,9 +63,16 @@ export default function Navbar() {
                     <Link href="/dashboard">
                         <a className='text-indigo-300'>dashboard</a>
                     </Link>
-                    <Link href="/login">
-                        <a className='px-8 py-2 bg-gray-800 text-white rounded-lg'>login</a>
-                    </Link>
+                    {
+                        user?.email ?
+                        <Link href="#">
+                          <a onClick={logout} className='px-8 py-2 bg-gray-800 text-white rounded-lg'>Log out</a>
+                        </Link>:
+                        <Link href="/login">
+                          <a className='px-8 py-2 bg-gray-800 text-white rounded-lg'>Log In</a>
+                        </Link>
+                    }
+                    
                 </div>
             </div>
         </nav>
