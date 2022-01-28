@@ -9,7 +9,7 @@ const BlogDataFetching = () => {
     const [pageCount, setPageCount] = useState(0);
     const size = 10;
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs?page=${page}&&size=${size}`)
+        fetch(`https://afternoon-atoll-34406.herokuapp.com/blogs?page=${page}&&size=${size}`)
         .then(res => res.json())
         .then(data => {
             setBlogs(data.blogs);

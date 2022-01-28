@@ -6,7 +6,7 @@ function BolgDetails(){
     const blogId = router.query.blogId
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs/${blogId}`)
+        fetch(`https://afternoon-atoll-34406.herokuapp.com/blogs/${blogId}`)
         .then(res => res.json())
         .then(data => setBlogs(data));
         

@@ -5,7 +5,13 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
-    return Component.getLayout(<Component {...pageProps} />)
+    return (
+      <>
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
+      </>
+    )
   }
   return (
      <>
