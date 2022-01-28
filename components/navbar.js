@@ -68,6 +68,12 @@ export default function Navbar() {
                     }
                     {
                         user?.email ?
+                            <Link href="/addBlog">
+                            <a className='text-indigo-300'>ADD BLOG</a>
+                            </Link>: ""
+                    }
+                    {
+                        user?.email ?
                         <Link href="#">
                           <a onClick={logout} className='px-8 py-2 bg-gray-800 text-white rounded-lg'>Log out</a>
                         </Link>:
